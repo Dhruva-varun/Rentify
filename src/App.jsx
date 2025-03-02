@@ -5,12 +5,14 @@ import Register from '../pages/Register'
 import Login from '../pages/Login'
 import Profile from '../pages/profile'
 import Listing from '../pages/Listing'
+import Header from '../components/Header'
 
 
 
 function App() {
   return (
     <BrowserRouter>
+    <Header/>
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/register' element={<Register />}/>
