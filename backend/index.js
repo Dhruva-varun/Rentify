@@ -4,7 +4,7 @@ const cors = require("cors")
 const authRoute = require("./routes/authRoute")
 
 require("dotenv").config();
-// connectDB();
+connectDB();
 const PORT = process.env.PORT || 3000;
 
 const app = express();
