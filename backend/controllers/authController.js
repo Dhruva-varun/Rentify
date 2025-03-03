@@ -8,7 +8,7 @@ exports.register = async (req, res, next) => {
     const { userName, email, password } = req.body;
 
     let user = await User.findOne({ email });
-    if (user) return next(errorHandler(400,"user already exists"));
+    if (user) return next(errorHandler(400,"User Already Exists"));
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -26,35 +26,28 @@ exports.register = async (req, res, next) => {
   }
 };
 
-exports.login = async (req, res) => {
+exports.login = async (req, res,next) => {
     try {
         const { email, password } = req.body;
     
         let user = await User.findOne({ email });
-        if (!user) return res.status(400).send("Invalid Credentials");
+        if (!user) return next(errorHandler(400,"Invalid Credentials"));
     
         const validPassword = await bcrypt.compare(
             password,
             user.password
           );
           if (!validPassword) {
-            return res.send({
-              success: false,
-              message: "Invalid password",
-            });
+            return next(errorHandler(400,"Invalid Credentials"));
           }
           
-          const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-            expiresIn: "1d",
-          });
+          const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
-          res.status(201).json({
-            token,
-            message: "User login successful"
-          });
+          const{ password: pass , ...restInfo} = user._doc;
+
+          res.cookie("access_token", token,{httpOnly: true}).status(201).json(restInfo);
       } catch (err) {
-        console.error(err.message);
-        res.status(500).json({ message: "User login failed" });
+        next(err);
       }
 };
 

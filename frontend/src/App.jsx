@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from '../pages/home'
-import Register from '../pages/Register'
-import Login from '../pages/Login'
-import Profile from '../pages/profile'
-import Listing from '../pages/Listing'
-import Header from '../components/Header'
+import Home from './pages/home'
+import Register from './pages/Register'
+import Login from './pages/Login'
+import Profile from './pages/profile'
+import Listing from './pages/Listing'
+import Header from './components/Header'
 
 
 
