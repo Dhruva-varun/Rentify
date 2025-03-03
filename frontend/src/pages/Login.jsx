@@ -1,12 +1,15 @@
-
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { loginInStart,loginInSuccess,loginInFailure } from "../redux/user/userSlice";
+import {
+  loginInStart,
+  loginInSuccess,
+  loginInFailure,
+} from "../redux/user/userSlice";
 
-function Login(){
+function Login() {
   const [formData, setFormData] = useState({});
-  const {loading, error} = useSelector((state)=> state.user);
+  const { loading, error } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,9 +48,7 @@ function Login(){
 
   return (
     <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl text-center font-semibold my-7 mt-32">
-        Login
-      </h1>
+      <h1 className="text-3xl text-center font-semibold my-7 mt-32">Login</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="email"
