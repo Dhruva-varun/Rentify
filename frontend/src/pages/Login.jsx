@@ -6,6 +6,7 @@ import {
   loginInSuccess,
   loginInFailure,
 } from "../redux/user/userSlice";
+import GoogleAuth from "../components/GoogleAuth";
 
 function Login() {
   const [formData, setFormData] = useState({});
@@ -71,11 +72,11 @@ function Login() {
         >
           {loading ? "Loading..." : "Login"}
         </button>
-        {/* <OAuth/> */}
+        <GoogleAuth/>
       </form>
       <div className="flex gap-2 mt-5">
         <p>Dont Have an account?</p>
-        <Link to={"/login"}>
+        <Link to={"/register"}>
           <span className="text-blue-700">Register</span>
         </Link>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import GoogleAuth from "../components/GoogleAuth";
 
 function Register() {
   const [formData, setFormData] = useState({});
@@ -78,7 +79,7 @@ function Register() {
         >
           {loading ? "Loading..." : "Register"}
         </button>
-        {/* <OAuth/> */}
+        <GoogleAuth/>
       </form>
       <div className="flex gap-2 mt-5">
         <p>Have an account?</p>
