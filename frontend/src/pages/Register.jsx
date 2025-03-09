@@ -20,7 +20,7 @@ function Register() {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await fetch("/api/user/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

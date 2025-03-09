@@ -1,7 +1,9 @@
 const express = require("express");
 const connectDB  = require("./config/db");
 const cors = require("cors")
+const cookieParser = require("cookie-parser")
 const authRoute = require("./routes/authRoute")
+const userRoute = require("./routes/userRoute.js")
 
 require("dotenv").config();
 connectDB();
@@ -11,8 +13,10 @@ const app = express();
 app.use(cors())
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use(cookieParser());
 
-app.use("/api/user", authRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/user", userRoute );
 
 app.listen(PORT,()=>{
     console.log(`server runnung on port ${PORT}` )

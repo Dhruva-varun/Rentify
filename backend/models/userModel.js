@@ -20,7 +20,7 @@ const userSchema = mongoose.Schema(
     },
     profile_pic:{
       type:String,
-      default:"https://w7.pngwing.com/pngs/184/113/png-transparent-user-profile-computer-icons-profile-heroes-black-silhouette-thumbnail.png"
+      default:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHvZ0pbf4bXvAJgVZVuRQqrNWnoWl96cV6wQ&s"
     },
   },
   { timestamps: true }

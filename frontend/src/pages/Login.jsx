@@ -25,7 +25,7 @@ function Login() {
     e.preventDefault();
     try {
       dispatch(loginInStart());
-      const response = await fetch("/api/user/login", {
+      const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
