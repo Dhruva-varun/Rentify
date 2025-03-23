@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { deleteUserFailure, deleteUserStart, deleteUserSuccess, updateUserFailure, updateUserStart, updateUserSuccess } from "../redux/user/userSlice";
+import { deleteUserFailure, deleteUserStart, deleteUserSuccess, logOutUserFailure, logOutUserStart, logOutUserSuccess, updateUserFailure, updateUserStart, updateUserSuccess } from "../redux/user/userSlice";
 
 function Profile() {
   const { currentUser, loading , error } = useSelector((state) => state.user);
@@ -99,6 +99,21 @@ function Profile() {
     }
   };
 
+  const handleLogOut = async () => {
+    try {
+      dispatch(logOutUserStart());
+      const res = await fetch('/api/auth/logout');
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(logOutUserFailure(data.message));
+        return;
+      }
+      dispatch(logOutUserSuccess(data));
+    } catch (error) {
+      dispatch(logOutUserFailure(error.message));
+    }
+  };
+
 
   return (
     <div className="p-3 max-w-lg mx-auto">
@@ -171,10 +186,10 @@ function Profile() {
         >
           Delete account
         </span>
-        <span //onClick={handleSignOut}
+        <span onClick={handleLogOut}
           className="text-red-700 cursor-pointer"
         >
-          Sign out
+          Logout
         </span>
       </div>
 
