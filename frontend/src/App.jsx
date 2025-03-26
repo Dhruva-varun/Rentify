@@ -20,12 +20,12 @@ function App() {
         <Route path='/' element={<Home />}/>
         <Route path='/register' element={<Register />}/>
         <Route path='/login' element={<Login />}/>
+        <Route path='/listing/:id' element={<Listing />}/>
         <Route element={<PrivateRoute/>} >
         <Route path='/profile' element={<Profile />}/>
         <Route path='/create-listing' element={<CreateListing />}/>
         <Route path='/update-listing/:id' element={<UpdateListing />}/>
         </Route>
-        <Route path='/listing' element={<Listing />}/>
       </Routes>
     </BrowserRouter>   
   )
