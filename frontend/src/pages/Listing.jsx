@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css/bundle';
 import {
-  FaBath,
   FaBed,
   FaChair,
   FaMapMarkedAlt,
@@ -92,7 +91,7 @@ function Listing() {
               {listing.name} - ${' '}
               {listing.offer
                 ? listing.discountPrice.toLocaleString('en-US')
-                : listing.regularPrice.toLocaleString('en-US')}
+                : listing.regularPrice.toLocaleString('en-US')}/ month
             </p>
             <p className='flex items-center mt-6 gap-2 text-slate-600  text-sm'>
               <FaMapMarkerAlt className='text-green-700' />
