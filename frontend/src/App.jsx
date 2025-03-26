@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from './pages/home'
+import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
@@ -28,7 +28,7 @@ function App() {
         <Route path='/create-listing' element={<CreateListing />}/>
         <Route path='/update-listing/:id' element={<UpdateListing />}/>
         </Route>
-      </Routes>
+      </Routes>    
     </BrowserRouter>   
   )
 }
