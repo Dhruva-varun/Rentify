@@ -13,7 +13,8 @@ function Profile() {
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
   const [updateSuccess , setUpdateSuccess] = useState(false)
-
+  const [listingsError , setListingsError] = useState(null)
+  const [userListings , setUserListings] = useState([]);
   useEffect(() => {
     if (file) {
       handleFileUpload(file);
@@ -114,6 +115,42 @@ function Profile() {
     }
   };
 
+  const handleShowListings = async () => {
+    try {
+      setListingsError(null);
+      const res = await fetch(`/api/user/listings/${currentUser._id}`);
+      const data = await res.json();
+      if (data.success === false) {
+        setListingsError(data.message);
+        return;
+      }
+
+      setUserListings(data);
+    } catch (error) {
+      setListingsError("Error in showing listing");
+    }
+  };
+
+  const handleListingDelete = async (listingId) => {
+    try {
+      setListingsError(null);
+      const res = await fetch(`/api/listing/delete/${listingId}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        setListingsError(data.message);
+        return;
+      }
+
+      setUserListings((prev) =>
+        prev.filter((listing) => listing._id !== listingId)
+      );
+    } catch (error) {
+      setListingsError("Error in deleting listing");
+    }
+  };
+
 
   return (
     <div className="p-3 max-w-lg mx-auto">
@@ -197,12 +234,12 @@ function Profile() {
       <p className="text-green-700 mt-5">
         {updateSuccess ? "User is updated successfully!" : ""}
       </p>
-      {/*
+      
       <button onClick={handleShowListings} className="text-green-700 w-full">
         Show Listings
       </button>
       <p className="text-red-700 mt-5">
-        {showListingsError ? "Error showing listings" : ""}
+        {listingsError ? listingsError : ""}
       </p>
 
       {userListings && userListings.length > 0 && (
@@ -243,7 +280,7 @@ function Profile() {
             </div>
           ))}
         </div>
-      )} */}
+      )}
     </div>
   );
 }
