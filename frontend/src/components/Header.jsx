@@ -53,7 +53,7 @@ function Header() {
             Home
           </li>
         </Link>
-        <Link to='/listing'>
+        <Link to='/search'>
           <li className='hidden sm:inline text-slate-700 hover:underline'>
             Listing
           </li>
