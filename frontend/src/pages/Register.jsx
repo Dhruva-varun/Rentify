@@ -39,55 +39,62 @@ function Register() {
       setLoading(false);
       setError(null);
       navigate("/login");
-      console.log(data);
     } catch (error) {
       setLoading(false);
       setError(error.message);
     }
   };
-  return (
-    <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl text-center font-semibold my-7 mt-32">
-        Register
-      </h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="username"
-          className="border p-3 rounded-lg"
-          id="userName"
-          onChange={handleChange}
-        />
-        <input
-          type="email"
-          placeholder="email"
-          className="border p-3 rounded-lg"
-          id="email"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          className="border p-3 rounded-lg"
-          id="password"
-          onChange={handleChange}
-        />
 
-        <button
-          disabled={loading}
-          className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
-        >
-          {loading ? "Loading..." : "Register"}
-        </button>
-        <GoogleAuth/>
-      </form>
-      <div className="flex gap-2 mt-5">
-        <p>Have an account?</p>
-        <Link to={"/login"}>
-          <span className="text-blue-700">Login</span>
-        </Link>
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-gray-200 p-5">
+      <div className="w-full max-w-md p-8 rounded-2xl shadow-xl bg-gradient-to-br from-teal-300 to-blue-400 text-gray-700">
+        <h1 className="text-4xl font-bold text-center">Create Account</h1>
+        <p className="text-gray-700 text-center mt-2">Join us today!</p>
+
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 mt-6">
+          <input
+            type="text"
+            placeholder="Username"
+            className="w-full p-3 border border-gray-300 rounded-lg text-gray-700 focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            id="userName"
+            onChange={handleChange}
+          />
+          <input
+            type="email"
+            placeholder="Email Address"
+            className="w-full p-3 border border-gray-300 rounded-lg text-gray-700 focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            id="email"
+            onChange={handleChange}
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full p-3 border border-gray-300 rounded-lg text-gray-700 focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            id="password"
+            onChange={handleChange}
+          />
+          <button
+            disabled={loading}
+            className="flex items-center justify-center w-full gap-3 bg-white border border-gray-300 text-gray-700 font-semibold p-3 rounded-lg hover:bg-gray-100 shadow-md transition-transform transform hover:scale-105 disabled:opacity-70"
+          >
+            {loading ? "Creating Account..." : "Register"}
+          </button>
+          <GoogleAuth />
+        </form>
+
+        <div className="flex justify-between items-center mt-5 text-gray-700text-sm">
+          <p>Already have an account?</p>
+          <Link
+            to={"/login"}
+            className="text-gray-700 font-semibold hover:underline"
+          >
+            Login
+          </Link>
+        </div>
+
+        {error && <p className="text-red-300 text-center mt-4">{error}</p>}
       </div>
-      {error && <p className="text-red-500 mt-5">{error}</p>}
     </div>
   );
 }

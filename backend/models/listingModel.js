@@ -26,6 +26,10 @@ const listingSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    bathrooms: {
+      type: Number,
+      required: true,
+    },
     furnished: {
       type: Boolean,
       required: true,
@@ -51,4 +55,3 @@ const listingSchema = mongoose.Schema(
 );
 
 module.exports = mongoose.model("Listing", listingSchema);
- 

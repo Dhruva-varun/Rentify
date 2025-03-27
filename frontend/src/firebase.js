@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "rentify-158fe",
   storageBucket: "rentify-158fe.firebasestorage.app",
   messagingSenderId: "1021113713170",
-  appId: "1:1021113713170:web:94543f1421e08ce5f38ecb"
+  appId: "1:1021113713170:web:94543f1421e08ce5f38ecb",
 };
 
 // Initialize Firebase

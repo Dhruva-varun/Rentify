@@ -4,6 +4,7 @@ import { app } from "../firebase";
 import { useDispatch } from "react-redux";
 import { loginInSuccess } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 function GoogleAuth() {
   const dispatch = useDispatch();
@@ -31,16 +32,18 @@ function GoogleAuth() {
       dispatch(loginInSuccess(data));
       navigate("/");
     } catch (error) {
-      console.log("could not sign in with google", error);
+      console.log("Could not sign in with Google", error);
     }
   };
+
   return (
     <button
       onClick={handleGoogleClick}
       type="button"
-      className="bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95"
+      className="flex items-center justify-center w-full gap-3 bg-white border border-gray-300 text-gray-700 font-semibold p-3 rounded-lg hover:bg-gray-100 shadow-md transition-transform transform hover:scale-105"
     >
-      Continue with google
+      <FcGoogle className="text-xl" />
+      Continue with Google
     </button>
   );
 }
