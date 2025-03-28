@@ -1,6 +1,7 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const cors = require("cors");
+const path = require("path");
 const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/authRoute");
 const userRoute = require("./routes/userRoute.js");
@@ -19,6 +20,12 @@ app.use(cookieParser());
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/listing", listingRoute);
+
+app.use(express.static(path.join(__dirname,'/frontend/dist')));
+
+app.get("*",(req,res)=>{
+  res.sendFile(path.join(__dirname, 'frontend','dist','index.html'));
+})
 
 app.listen(PORT, () => {
   console.log(`server runnung on port ${PORT}`);
