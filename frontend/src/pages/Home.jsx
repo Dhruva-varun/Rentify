@@ -66,7 +66,7 @@ function Home() {
           </p>
         ) : (
           <>
-            <Swiper navigation className="max-w-7xl">
+            <Swiper navigation className="max-w-[85rem] mx-auto">
               {offerListings.map((listing) => (
                 <SwiperSlide key={listing._id}>
                   <div
@@ -80,7 +80,7 @@ function Home() {
               ))}
             </Swiper>
 
-            <div className="max-w-7xl mx-auto p-3 flex flex-col gap-8 my-10">
+            <div className="max-w-8xl mx-36 p-3 flex flex-col gap-8 my-10">
               {offerListings.length > 0 && (
                 <div>
                   <div className="my-3 flex justify-between">
@@ -88,7 +88,7 @@ function Home() {
                       Special Offers Just For You
                     </h2>
                     <Link
-                      className="text-sm text-cyan-600 hover:underline pt-5"
+                      className="text-sm text-cyan-600 hover:underline mr-5"
                       to={"/search?offer=true"}
                     >
                       View More Offers
@@ -109,7 +109,7 @@ function Home() {
                       Latest Rental Properties
                     </h2>
                     <Link
-                      className="text-sm text-cyan-600 hover:underline pt-5"
+                      className="text-sm text-cyan-600 hover:underline mr-5"
                       to={"/search"}
                     >
                       See All Rentals
