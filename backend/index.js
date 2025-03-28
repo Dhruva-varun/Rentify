@@ -21,14 +21,14 @@ app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/listing", listingRoute);
 
-app.use(express.static(path.join(__dirname,'/frontend/dist')));
+app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
 app.get("*",(req,res)=>{
   res.sendFile(path.join(__dirname, 'frontend','dist','index.html'));
 })
 
 app.listen(PORT, () => {
-  console.log(`server runnung on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
 
 app.use((err, req, res, next) => {
