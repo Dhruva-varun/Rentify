@@ -66,7 +66,7 @@ function Home() {
           </p>
         ) : (
           <>
-            <Swiper navigation className="max-w-[85rem] mx-auto">
+            <Swiper navigation className="max-w-[1400px] mx-auto">
               {offerListings.map((listing) => (
                 <SwiperSlide key={listing._id}>
                   <div
@@ -80,7 +80,7 @@ function Home() {
               ))}
             </Swiper>
 
-            <div className="max-w-8xl mx-36 p-3 flex flex-col gap-8 my-10">
+            <div className="max-w-[1400px] mx-auto p-3 flex flex-col gap-8 my-10">
               {offerListings.length > 0 && (
                 <div>
                   <div className="my-3 flex justify-between">

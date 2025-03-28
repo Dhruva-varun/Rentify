@@ -87,7 +87,7 @@ function Login() {
           </Link>
         </div>
 
-        {error && <p className="text-red-300 text-center mt-4">{error}</p>}
+        {error && <p className="text-red-600 text-center mt-4">{error}</p>}
       </div>
     </div>
   );
