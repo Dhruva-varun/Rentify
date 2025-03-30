@@ -24,7 +24,6 @@ function CreateListing() {
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  console.log(formData);
 
   const handleImageSubmit = async (e) => {
     if (files.length === 0) {
